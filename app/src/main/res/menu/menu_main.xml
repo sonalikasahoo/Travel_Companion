@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/btnAddTrip"
+        android:icon="@drawable/add_icon"
+        android:title="add"
+        app:showAsAction="always"/>
+
+    <item
+        android:title="@string/icon_title"
+        android:id="@+id/login_icon"
+        android:icon="@drawable/login_icon"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:title="@string/logout_title"
+                android:id="@+id/btnLogout"
+                app:showAsAction="always"></item>
+        </menu>
+    </item>
+
+    <item android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        app:showAsAction="never"/>
+
+</menu>

@@ -2,6 +2,8 @@ package com.example.sona.travelcompanion;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(firebaseUser != null) {
             //Logged In
-            //addListeners();
+            addListeners();
         } else {
             startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder()
             .setIsSmartLockEnabled(false).setTheme(R.style.LoginTheme).setAvailableProviders(Arrays.asList(
@@ -35,7 +37,32 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void addListeners() {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.btnLogout:
+                //logout here
+                return true;
+
+            case R.id.btnAddTrip:
+                //Add a new Trip to the database
+                //createNewTrip();
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void addListeners() {
+        //final DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference();
     }
 }
