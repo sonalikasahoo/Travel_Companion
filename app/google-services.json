@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "878852708837",
+    "firebase_url": "https://travelcompanion-883d8.firebaseio.com",
+    "project_id": "travelcompanion-883d8",
+    "storage_bucket": "travelcompanion-883d8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878852708837:android:8f0cfb0b1f843a22",
+        "android_client_info": {
+          "package_name": "com.example.sona.travelcompanion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "878852708837-srsvcfkleamb5flop2rmr0duef9g9idh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sona.travelcompanion",
+            "certificate_hash": "00164910aad0d7d4841db9c47df599f62e821b99"
+          }
+        },
+        {
+          "client_id": "878852708837-rgk93b42f2bu0ftr7o7ifsek70kart4k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBg1lI4vCtkJ5oj81lixkxWWcJe17xTuVw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "878852708837-rgk93b42f2bu0ftr7o7ifsek70kart4k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
