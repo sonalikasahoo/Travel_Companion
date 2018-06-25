@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
 
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.btnAddTrip:
                 //Add a new Trip to the database
-                //createNewTrip();
+                addListeners();
                 return true;
 
             default:
@@ -63,6 +65,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addListeners() {
-        //final DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference();
+        final DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference();
+        MenuItem btnAdd = findViewById(R.id.btnAddTrip);
+        btnAdd.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                
+                return true;
+            }
+        });
     }
 }
