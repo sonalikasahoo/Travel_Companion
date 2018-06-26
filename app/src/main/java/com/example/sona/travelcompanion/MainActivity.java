@@ -29,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intentWhoCreatedThis = getIntent();
+        if(intentWhoCreatedThis != null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.flFragContainer,
+                    new MyPlansFragment()).commit();
+        }
+
+
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         if(firebaseUser != null) {

@@ -40,7 +40,7 @@ public class MyPlansAdapter extends RecyclerView.Adapter<MyPlansAdapter.MyPlansV
         holder.tvTripTitle.setText(oneEle.getTripTitle());
         holder.tvDestination.setText(oneEle.getDestination());
         holder.tvHotel.setText(oneEle.getHotel());
-        holder.tvFlight.setText(oneEle.getHotel());
+        holder.tvFlight.setText(oneEle.getFlight_train());
     }
 
     @Override

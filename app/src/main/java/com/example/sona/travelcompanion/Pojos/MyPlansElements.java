@@ -10,11 +10,11 @@ public class MyPlansElements {
     String hotel;
     String flight_train;
 
-    public MyPlansElements(String tripTitle, String destination, String hotel, String flight_train) {
+    public MyPlansElements(String tripTitle) {
         this.tripTitle = tripTitle;
-        this.destination = destination;
-        this.hotel = hotel;
-        this.flight_train = flight_train;
+        this.destination = "Destination";
+        this.hotel = "Hotel";
+        this.flight_train = "Flight//Train";
     }
 
     public String getTripTitle() {

@@ -6,7 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -16,6 +18,14 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class TakeTripTitleActivity extends AppCompatActivity {
 
@@ -53,10 +63,35 @@ public class TakeTripTitleActivity extends AppCompatActivity {
         btnCreateTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String tripTitle = etTripTitle.getText().toString();
-                String fromDate = etFromDate.getText().toString();
-                String toDate = etToDate.getText().toString();
+                final String tripTitle = etTripTitle.getText().toString();
+                final String fromDate = etFromDate.getText().toString();
+                final String toDate = etToDate.getText().toString();
                 Log.d("pikachu", "onClick: "+tripTitle+" "+fromDate+" "+toDate);
+                final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                final DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference();
+                dbReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.child("users").hasChild(firebaseUser.getUid()) &&
+                                dataSnapshot.child("users").child(firebaseUser.getUid()).hasChild(tripTitle.toLowerCase())) {
+                            etTripTitle.setText("");
+                            Toast.makeText(TakeTripTitleActivity.this, "This trip name already exists!!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            dbReference.child("users").child(firebaseUser.getUid()).child(tripTitle.toLowerCase()).child("destination").push().setValue("Destination");
+                            dbReference.child("users").child(firebaseUser.getUid()).child(tripTitle.toLowerCase()).child("hotel").push().setValue("Hotel");
+                            dbReference.child("users").child(firebaseUser.getUid()).child(tripTitle.toLowerCase()).child("flight").push().setValue("Flight");
+                            dbReference.child("users").child(firebaseUser.getUid()).child(tripTitle.toLowerCase()).child("fromdate").push().setValue(fromDate);
+                            dbReference.child("users").child(firebaseUser.getUid()).child(tripTitle.toLowerCase()).child("todate").push().setValue(toDate);
+                            Intent i = new Intent(TakeTripTitleActivity.this, MainActivity.class);
+                            startActivity(i);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 
