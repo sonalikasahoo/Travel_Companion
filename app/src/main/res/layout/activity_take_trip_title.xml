@@ -24,6 +24,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="From"
+        android:clickable="true"
+        android:editable="false"
         android:layout_marginTop="10dp"
         android:inputType="date" />
 
