@@ -11,6 +11,8 @@ import android.widget.Button;
 
 import com.example.sona.travelcompanion.Fragments.MyPlansFragment;
 import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.auth.ErrorCodes;
+import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -29,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intentWhoCreatedThis = getIntent();
+        /*Intent intentWhoCreatedThis = getIntent();
         if(intentWhoCreatedThis != null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.flFragContainer,
                     new MyPlansFragment()).commit();
-        }
+        }*/
 
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -48,6 +50,33 @@ public class MainActivity extends AppCompatActivity {
                             new AuthUI.IdpConfig.GoogleBuilder().build()))
                             .build(),
                     RC_SIGN_IN);
+        }
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // RC_SIGN_IN is the request code you passed into startActivityForResult(...) when starting the sign in flow.
+        if (requestCode == RC_SIGN_IN) {
+            IdpResponse response = IdpResponse.fromResultIntent(data);
+
+            // Successfully signed in
+            if (resultCode == RESULT_OK) {
+                firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                addListeners();
+                Log.d("pikachu", "onActivityResult: " + firebaseUser.getDisplayName());
+                Log.d("pikachu", "onActivityResult: " + firebaseUser.getUid());
+            } else {
+                // Sign in failed
+                if (response == null) {
+                    // User pressed back button
+                    return;
+                }
+                if (response.getError().getErrorCode() == ErrorCodes.NO_NETWORK) {
+                    return;
+                }
+
+
+            }
         }
     }
 
