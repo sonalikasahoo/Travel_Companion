@@ -1,10 +1,15 @@
 package com.example.sona.travelcompanion;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
+import com.example.sona.travelcompanion.Fragments.MyPlansFragment;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -66,12 +71,22 @@ public class MainActivity extends AppCompatActivity {
 
     public void addListeners() {
         final DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference();
-        MenuItem btnAdd = findViewById(R.id.btnAddTrip);
+        /*MenuItem btnAdd = findViewById(R.id.btnAddTrip);
         btnAdd.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 
                 return true;
+            }
+        });*/
+        Button btnMyPlans;
+        btnMyPlans = findViewById(R.id.btnMyPlans);
+        btnMyPlans.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("pikachu", "onClick: Going to fragment pikachu");
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragContainer,
+                        new MyPlansFragment()).commit();
             }
         });
     }
