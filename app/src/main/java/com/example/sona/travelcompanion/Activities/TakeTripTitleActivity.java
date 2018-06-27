@@ -1,17 +1,12 @@
-package com.example.sona.travelcompanion;
+package com.example.sona.travelcompanion.Activities;
 
 import android.app.DatePickerDialog;
-import java.util.Calendar;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +14,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.sona.travelcompanion.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -77,11 +73,8 @@ public class TakeTripTitleActivity extends AppCompatActivity {
                             etTripTitle.setText("");
                             Toast.makeText(TakeTripTitleActivity.this, "This trip name already exists!!", Toast.LENGTH_SHORT).show();
                         } else {
-                            dbReference.child("users").child(firebaseUser.getUid()).child(tripTitle.toLowerCase()).child("destination").push().setValue("Destination");
-                            dbReference.child("users").child(firebaseUser.getUid()).child(tripTitle.toLowerCase()).child("hotel").push().setValue("Hotel");
-                            dbReference.child("users").child(firebaseUser.getUid()).child(tripTitle.toLowerCase()).child("flight").push().setValue("Flight");
-                            dbReference.child("users").child(firebaseUser.getUid()).child(tripTitle.toLowerCase()).child("fromdate").push().setValue(fromDate);
-                            dbReference.child("users").child(firebaseUser.getUid()).child(tripTitle.toLowerCase()).child("todate").push().setValue(toDate);
+                            dbReference.child("users").child(firebaseUser.getUid()).child(tripTitle).child("fromdate").push().setValue(fromDate);
+                            dbReference.child("users").child(firebaseUser.getUid()).child(tripTitle).child("todate").push().setValue(toDate);
                             Intent i = new Intent(TakeTripTitleActivity.this, MainActivity.class);
                             startActivity(i);
                         }

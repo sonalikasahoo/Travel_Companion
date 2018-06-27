@@ -3,6 +3,11 @@
     <string name="action_settings">Settings</string>
     <string name="icon_title">MyProfile</string>
     <string name="logout_title">Logout</string>
+    <string name="ll">ll=40.7,-74</string>
+    <string name="id">client_id=KKBBEJGMOVBQ10ROB11LPW4B5Q1LLQZPERTANXJXTW2W0DQI</string>
+    <string name="secret">client_secret=LK321CFLQIG22DBN2IMMK35IZOBPKCCSXR1D4JRPSIZ20U51</string>
+    <string name="version">v=20180626</string>
+    <string name="baseUrl">https://api.foursquare.com/v2/venues/</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

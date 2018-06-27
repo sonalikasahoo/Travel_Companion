@@ -10,6 +10,7 @@
     <Button
         android:id="@+id/btnAddTrip"
         android:layout_gravity="right"
+        android:padding="10dp"
         android:layout_margin="5dp"
         android:background="@color/colorMyYellow"
         android:text="Create New Trip"
@@ -20,4 +21,6 @@
         android:id="@+id/rvMyPlans"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+
 </LinearLayout>

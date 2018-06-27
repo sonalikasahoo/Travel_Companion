@@ -14,7 +14,7 @@ public class MyPlansElements {
         this.tripTitle = tripTitle;
         this.destination = "Destination";
         this.hotel = "Hotel";
-        this.flight_train = "Flight//Train";
+        this.flight_train = "Flight/Train";
     }
 
     public String getTripTitle() {

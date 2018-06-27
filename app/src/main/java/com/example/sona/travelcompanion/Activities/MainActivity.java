@@ -1,4 +1,4 @@
-package com.example.sona.travelcompanion;
+package com.example.sona.travelcompanion.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.sona.travelcompanion.Fragments.MyPlansFragment;
+import com.example.sona.travelcompanion.R;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
@@ -30,13 +31,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        /*Intent intentWhoCreatedThis = getIntent();
-        if(intentWhoCreatedThis != null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.flFragContainer,
-                    new MyPlansFragment()).commit();
-        }*/
-
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -120,6 +114,8 @@ public class MainActivity extends AppCompatActivity {
         btnMyPlans.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                final DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference();
                 Log.d("pikachu", "onClick: Going to fragment pikachu");
                 getSupportFragmentManager().beginTransaction().replace(R.id.flFragContainer,
                         new MyPlansFragment()).commit();
