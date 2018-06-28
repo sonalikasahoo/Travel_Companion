@@ -15,7 +15,7 @@ import android.widget.Button;
 
 import com.example.sona.travelcompanion.Activities.SingleTripActivity;
 import com.example.sona.travelcompanion.Adapters.MyPlansAdapter;
-import com.example.sona.travelcompanion.Listeners.MyPlansItemClickListener;
+import com.example.sona.travelcompanion.Listeners.RecyclerViewItemClickListener;
 import com.example.sona.travelcompanion.Pojos.MyPlansElements;
 import com.example.sona.travelcompanion.R;
 import com.example.sona.travelcompanion.Activities.TakeTripTitleActivity;
@@ -56,7 +56,7 @@ public class MyPlansFragment extends Fragment {
         myPlansElementsMyPlansAdapter.notifyDataSetChanged();
 
         rvMyPlans.addOnItemTouchListener(
-                new MyPlansItemClickListener(container.getContext(), rvMyPlans ,new MyPlansItemClickListener.OnItemClickListener() {
+                new RecyclerViewItemClickListener(container.getContext(), rvMyPlans ,new RecyclerViewItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         // do whatever
                         Intent i = new Intent(getActivity(), SingleTripActivity.class);

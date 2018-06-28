@@ -5,17 +5,27 @@ package com.example.sona.travelcompanion.APIs;
  */
 
 public class FourSquareVenuesExplore {
-    FourSquareExploreMeta meta;
+    FourSquareVenuesExploreMeta meta;
+    FourSquareVenuesExploreResponses response;
 
-    public FourSquareVenuesExplore(FourSquareExploreMeta meta) {
+    public FourSquareVenuesExplore(FourSquareVenuesExploreMeta meta, FourSquareVenuesExploreResponses response) {
         this.meta = meta;
+        this.response = response;
     }
 
-    public FourSquareExploreMeta getMeta() {
+    public FourSquareVenuesExploreMeta getMeta() {
         return meta;
     }
 
-    public void setMeta(FourSquareExploreMeta meta) {
+    public void setMeta(FourSquareVenuesExploreMeta meta) {
         this.meta = meta;
+    }
+
+    public FourSquareVenuesExploreResponses getResponse() {
+        return response;
+    }
+
+    public void setResponse(FourSquareVenuesExploreResponses response) {
+        this.response = response;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.sona.travelcompanion.Activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +10,9 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.app.AlertDialog;
 import android.widget.Toast;
 
 import com.example.sona.travelcompanion.Adapters.MyPlansAdapter;
@@ -38,6 +41,7 @@ public class SingleTripActivity extends AppCompatActivity {
     TextView tvToDateDisplay;
     Button btnAddDeatils;
     FirebaseUser firebaseUser;
+    DatabaseReference dbReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +63,97 @@ public class SingleTripActivity extends AppCompatActivity {
         rvSingleTripEle.setAdapter(singleTripAdapter);
 
 
-        DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference().child("users")
+         dbReference = FirebaseDatabase.getInstance().getReference().child("users")
                 .child(firebaseUser.getUid()).child(tripName);
+
+         callListener();
+
+
+
+
+
+        btnAddDeatils.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // setup the alert builder
+                AlertDialog.Builder builder = new AlertDialog.Builder(SingleTripActivity.this);
+                builder.setTitle("Choose an Item");
+
+                // add a list
+                String[] animals = {"Destination", "Flight", "Hotel", "Places To Visit",
+                        "Shopping List", "Finance", "Note", "Checklist"};
+                builder.setItems(animals, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                            case 0:
+                                Intent i = new Intent(SingleTripActivity.this, SetDestinationActivity.class);
+                                i.putExtra("tripName", tripName);
+                                startActivity(i);
+                                break;
+                            case 1: takeFlightInput();
+                                break;
+                            case 2:
+                                Intent ii = new Intent(SingleTripActivity.this,
+                                        SearchHotelsActivity.class);
+                                ii.putExtra("tripName", tripName);
+                                startActivity(ii);
+                                break;
+                            case 3: break;
+                            case 4: break;
+                        }
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+                /*Intent i = new Intent(SingleTripActivity.this, SetDestinationActivity.class);
+                i.putExtra("tripName", tripName);
+                startActivity(i);*/
+            }
+        });
+
+    }
+
+    void takeFlightInput() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Enter Flight");
+
+        // Set up the input
+        final EditText input = new EditText(this);
+        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        //input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        builder.setView(input);
+
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String myFlight = input.getText().toString();
+                if(myFlight.length() == 0) {
+                    Toast.makeText(SingleTripActivity.this,
+                            "Enter Valid Flight Number", Toast.LENGTH_SHORT).show();
+                    input.setText("");
+                } else {
+                    dbReference.child("flight").push().setValue(myFlight);
+                    callListener();
+                }
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
+    void callListener() {
         dbReference.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
@@ -101,16 +194,5 @@ public class SingleTripActivity extends AppCompatActivity {
 
             }
         });
-
-
-        btnAddDeatils.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(SingleTripActivity.this, SetDestinationActivity.class);
-                i.putExtra("tripName", tripName);
-                startActivity(i);
-            }
-        });
-
     }
 }

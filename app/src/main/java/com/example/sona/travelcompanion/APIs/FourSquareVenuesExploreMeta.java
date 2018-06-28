@@ -4,10 +4,10 @@ package com.example.sona.travelcompanion.APIs;
  * Created by sona on 6/27/2018.
  */
 
-public class FourSquareExploreMeta {
+public class FourSquareVenuesExploreMeta {
     int code;
 
-    public FourSquareExploreMeta(int code) {
+    public FourSquareVenuesExploreMeta(int code) {
         this.code = code;
     }
 
