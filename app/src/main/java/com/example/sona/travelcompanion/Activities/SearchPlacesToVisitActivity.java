@@ -23,43 +23,39 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class SearchHotelsActivity extends AppCompatActivity {
+public class SearchPlacesToVisitActivity extends AppCompatActivity {
 
-
-    EditText etSearchhNear, etHotelName;
-    Button btnOk, btnSearchHotel, btnRecommendHotel, btnViewAllHotels;
+    EditText etSearchPlaceNear, etPlaceName;
+    Button btnPlaceOk, btnSearchPlace, btnRecommendPlace, btnViewAllPlaces;
     String location;
-    String hotelName;
-    String tripName;
-    String placeUnder;
-
+    String placeName;
+    String tripName, placeUnder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_hotels);
+        setContentView(R.layout.activity_search_places_to_visit);
 
         Intent intentWhoCreatedThis = getIntent();
         tripName = intentWhoCreatedThis.getStringExtra("tripName");
         placeUnder = intentWhoCreatedThis.getStringExtra("placeUnder");
 
-        etSearchhNear = findViewById(R.id.etSearchhNear);
-        etHotelName = findViewById(R.id.etHotelName);
-        btnOk = findViewById(R.id.btnOk);
-        btnSearchHotel = findViewById(R.id.btnSearchHotel);
-        btnRecommendHotel = findViewById(R.id.btnRecommendHotel);
-        btnViewAllHotels = findViewById(R.id.btnViewAllHotels);
+        etSearchPlaceNear = findViewById(R.id.etSearchPlaceNear);
+        etPlaceName = findViewById(R.id.etPlaceName);
+        btnPlaceOk = findViewById(R.id.btnPlaceOk);
+        btnSearchPlace = findViewById(R.id.btnSearchPlace);
+        btnRecommendPlace = findViewById(R.id.btnRecommendPlace);
+        btnViewAllPlaces = findViewById(R.id.btnViewAllPlaces);
 
         location = "";
-        hotelName = "";
+        placeName = "";
 
-
-        btnOk.setOnClickListener(new View.OnClickListener() {
+        btnPlaceOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location = etSearchhNear.getText().toString();
+                location = etSearchPlaceNear.getText().toString();
                 if(location.length() == 0) {
-                    Toast.makeText(SearchHotelsActivity.this,
+                    Toast.makeText(SearchPlacesToVisitActivity.this,
                             "Enter a place first", Toast.LENGTH_SHORT).show();
                 } else {
                     makeNetworkCall();
@@ -67,49 +63,48 @@ public class SearchHotelsActivity extends AppCompatActivity {
             }
         });
 
-        btnSearchHotel.setOnClickListener(new View.OnClickListener() {
+        btnSearchPlace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hotelName = etHotelName.getText().toString();
+                placeName = etPlaceName.getText().toString();
                 if(location.length() == 0) {
-                    Toast.makeText(SearchHotelsActivity.this,
+                    Toast.makeText(SearchPlacesToVisitActivity.this,
                             "Enter a location first!!!", Toast.LENGTH_SHORT).show();
-                } else if(hotelName.length() == 0) {
-                    Toast.makeText(SearchHotelsActivity.this,
-                            "Enter hotel name first!!!", Toast.LENGTH_SHORT).show();
+                } else if(placeName.length() == 0) {
+                    Toast.makeText(SearchPlacesToVisitActivity.this,
+                            "Enter place name first!!!", Toast.LENGTH_SHORT).show();
                 } else {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentHotelContainer,
-                            new ViewAllVenuesFragment(tripName, placeUnder, location, hotelName)).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentPlaceContainer,
+                            new ViewAllVenuesFragment(tripName, placeUnder, location, placeName)).commit();
                 }
             }
         });
 
-        btnRecommendHotel.setOnClickListener(new View.OnClickListener() {
+        btnRecommendPlace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(location.length() == 0) {
-                    Toast.makeText(SearchHotelsActivity.this,
+                    Toast.makeText(SearchPlacesToVisitActivity.this,
                             "Enter a location first!!!", Toast.LENGTH_SHORT).show();
                 } else {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentHotelContainer,
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentPlaceContainer,
                             new RecommendedVenuesFragment(tripName, placeUnder, location)).commit();
                 }
             }
         });
 
-        btnViewAllHotels.setOnClickListener(new View.OnClickListener() {
+        btnViewAllPlaces.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(location.length() == 0) {
-                    Toast.makeText(SearchHotelsActivity.this,
+                    Toast.makeText(SearchPlacesToVisitActivity.this,
                             "Enter a location first!!!", Toast.LENGTH_SHORT).show();
                 } else {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentHotelContainer,
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentPlaceContainer,
                             new ViewAllVenuesFragment(tripName, placeUnder,location)).commit();
                 }
             }
         });
-
 
     }
 
@@ -117,7 +112,7 @@ public class SearchHotelsActivity extends AppCompatActivity {
         String absoluteUrl = "https://api.foursquare.com/v2/venues/explore?client_id"
                 +"=KKBBEJGMOVBQ10ROB11LPW4B5Q1LLQZPERTANXJXTW2W0DQI&client_secret" +
                 "=LK321CFLQIG22DBN2IMMK35IZOBPKCCSXR1D4JRPSIZ20U51&v=20180626&near="
-                +location+"&query=hotel";
+                +location;
         OkHttpClient okHttpClient = new OkHttpClient();
         Request request = new Request.Builder().url(absoluteUrl).build();
 
@@ -136,12 +131,12 @@ public class SearchHotelsActivity extends AppCompatActivity {
                         FourSquareVenuesExplore.class);
                 Log.d("pikachu", "onResponse: "+fourSquareVenuesExplore.getMeta().getCode());
                 if(fourSquareVenuesExplore.getMeta().getCode() == 400) {
-                    SearchHotelsActivity.this.runOnUiThread(new Runnable() {
+                    SearchPlacesToVisitActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             location = "";
-                            etSearchhNear.setText("");
-                            Toast.makeText(SearchHotelsActivity.this,
+                            etSearchPlaceNear.setText("");
+                            Toast.makeText(SearchPlacesToVisitActivity.this,
                                     "Enter a valid place or a smaller area", Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -149,6 +144,4 @@ public class SearchHotelsActivity extends AppCompatActivity {
             }
         });
     }
-
-
 }

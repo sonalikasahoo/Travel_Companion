@@ -98,9 +98,16 @@ public class SingleTripActivity extends AppCompatActivity {
                                 Intent ii = new Intent(SingleTripActivity.this,
                                         SearchHotelsActivity.class);
                                 ii.putExtra("tripName", tripName);
+                                ii.putExtra("placeUnder", "hotel");
                                 startActivity(ii);
                                 break;
-                            case 3: break;
+                            case 3:
+                                Intent iii = new Intent(SingleTripActivity.this,
+                                        SearchPlacesToVisitActivity.class);
+                                iii.putExtra("tripName", tripName);
+                                iii.putExtra("placeUnder", "places to visit");
+                                startActivity(iii);
+                                break;
                             case 4: break;
                         }
                     }

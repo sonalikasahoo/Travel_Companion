@@ -13,11 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.sona.travelcompanion.APIs.FourSquareVenuesExplore;
-import com.example.sona.travelcompanion.APIs.FourSquareVenuesSearch;
-import com.example.sona.travelcompanion.APIs.FourSquareVenuesSearchElement;
+import com.example.sona.travelcompanion.APIs.FourSquareVenuesExploreItems;
+import com.example.sona.travelcompanion.APIs.FourSquareVenuesExploreItemsVenues;
 import com.example.sona.travelcompanion.Activities.DisplayVenueDetailsActivity;
+import com.example.sona.travelcompanion.Activities.SingleTripActivity;
 import com.example.sona.travelcompanion.Adapters.RecommendedHotelDisplayAdapter;
-import com.example.sona.travelcompanion.Adapters.ViewAllHotelsAdapter;
 import com.example.sona.travelcompanion.Listeners.RecyclerViewItemClickListener;
 import com.example.sona.travelcompanion.R;
 import com.google.gson.Gson;
@@ -31,33 +31,27 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class RecommendedVenuesFragment extends Fragment {
 
-public class ViewAllHotelsFragment extends Fragment {
-
+    ArrayList<FourSquareVenuesExploreItems> allRecommendedHotels = new ArrayList<>();
+    RecommendedHotelDisplayAdapter recommendedHotelDisplayAdapter;
     String location;
-    String hotelHint;
-    RecyclerView rvViewAllHotels;
-    ViewAllHotelsAdapter viewAllHotelsAdapter;
-    String tripName;
-    ArrayList<FourSquareVenuesSearchElement> allHotels = new ArrayList<>();
+    RecyclerView rvRecommendedHotels;
+    String tripName, placeUnder;
 
 
-    public ViewAllHotelsFragment() {
+    public RecommendedVenuesFragment() {
         // Required empty public constructor
     }
 
     @SuppressLint("ValidFragment")
-    public ViewAllHotelsFragment(String tripName, String location) {
-        this.tripName = tripName;
+    public RecommendedVenuesFragment(String tripName, String placeUnder, String location) {
+        this.placeUnder = placeUnder;
         this.location = location;
-        this.hotelHint = "";
-    }
-
-    @SuppressLint("ValidFragment")
-    public ViewAllHotelsFragment(String tripName, String location, String hotelHint) {
         this.tripName = tripName;
-        this.location = location;
-        this.hotelHint = hotelHint;
     }
 
     @Override
@@ -65,20 +59,22 @@ public class ViewAllHotelsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View frameView = inflater.inflate(R.layout.fragment_view_all_hotels, container, false);
+        View frameView = inflater.inflate(R.layout.fragment_recommended_hotels, container, false);
 
-        rvViewAllHotels = frameView.findViewById(R.id.rvViewAllHotels);
+        rvRecommendedHotels = frameView.findViewById(R.id.rvRecommendedHotels);
+
+
 
         getAllElements();
 
-        rvViewAllHotels.addOnItemTouchListener(
-                new RecyclerViewItemClickListener(container.getContext(), rvViewAllHotels ,new RecyclerViewItemClickListener.OnItemClickListener() {
+        rvRecommendedHotels.addOnItemTouchListener(
+                new RecyclerViewItemClickListener(container.getContext(), rvRecommendedHotels ,new RecyclerViewItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         // do whatever
                         Intent i = new Intent(getActivity(), DisplayVenueDetailsActivity.class);
                         i.putExtra("tripName", tripName);
-                        i.putExtra("putUnder","hotel");
-                        i.putExtra("venueId", allHotels.get(position).getId());
+                        i.putExtra("placeUnder",placeUnder);
+                        i.putExtra("venueId", allRecommendedHotels.get(position).getVenue().getId());
                         startActivity(i);
                     }
 
@@ -88,19 +84,21 @@ public class ViewAllHotelsFragment extends Fragment {
                 })
         );
 
+
         return frameView;
     }
 
-    void getAllElements() {
-        allHotels.clear();
 
-        String absoluteURL = "https://api.foursquare.com/v2/venues/search?client_id"
+    void getAllElements() {
+
+        allRecommendedHotels.clear();
+
+        String absoluteURL = "https://api.foursquare.com/v2/venues/explore?client_id"
                 +"=KKBBEJGMOVBQ10ROB11LPW4B5Q1LLQZPERTANXJXTW2W0DQI&client_secret" +
                 "=LK321CFLQIG22DBN2IMMK35IZOBPKCCSXR1D4JRPSIZ20U51&v=20180626&near="
-                +location+"&query=hotel";
-
-        if(hotelHint.length() != 0)
-            absoluteURL = absoluteURL + "&query=" + hotelHint;
+                +location;
+        if(placeUnder.equals("hotel"))
+            absoluteURL = absoluteURL +"&query=hotel";
 
         OkHttpClient okHttpClient = new OkHttpClient();
         final Request request = new Request.Builder().url(absoluteURL).build();
@@ -116,20 +114,19 @@ public class ViewAllHotelsFragment extends Fragment {
 
                 String result = response.body().string();
                 Gson gson = new Gson();
-                FourSquareVenuesSearch fourSquareVenuesSearch = gson.fromJson(result,
-                        FourSquareVenuesSearch.class);
-
-                allHotels = fourSquareVenuesSearch.getResponse().getVenues();
-                viewAllHotelsAdapter = new ViewAllHotelsAdapter(allHotels);
+                FourSquareVenuesExplore fourSquareVenuesExplore = gson.fromJson(result,
+                        FourSquareVenuesExplore.class);
+                allRecommendedHotels = fourSquareVenuesExplore.getResponse().getGroups().get(0).getItems();
+                recommendedHotelDisplayAdapter = new RecommendedHotelDisplayAdapter(allRecommendedHotels);
 
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        rvViewAllHotels.setLayoutManager(new GridLayoutManager(getContext(), 1));
-                        rvViewAllHotels.setAdapter(viewAllHotelsAdapter);
+                        rvRecommendedHotels.setLayoutManager(new GridLayoutManager(getContext(), 1));
+                        rvRecommendedHotels.setAdapter(recommendedHotelDisplayAdapter);
 
                         //recommendedHotelDisplayAdapter.notifyDataSetChanged();
-                        Log.d("pikachu", "run: adapter notified that dataset changed"+allHotels.size());
+                        Log.d("pikachu", "run: adapter notified that dataset changed"+allRecommendedHotels.size());
                     }
                 });
 

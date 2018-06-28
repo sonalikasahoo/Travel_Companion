@@ -22,7 +22,8 @@
         <activity android:name=".Activities.SingleTripActivity" />
         <activity android:name=".Activities.SetDestinationActivity" />
         <activity android:name=".Activities.SearchHotelsActivity" />
-        <activity android:name=".Activities.DisplayVenueDetailsActivity"></activity>
+        <activity android:name=".Activities.DisplayVenueDetailsActivity" />
+        <activity android:name=".Activities.SearchPlacesToVisitActivity"></activity>
     </application>
 
 </manifest>

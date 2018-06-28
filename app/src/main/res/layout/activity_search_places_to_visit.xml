@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sona.travelcompanion.Activities.SearchHotelsActivity">
+    tools:context="com.example.sona.travelcompanion.Activities.SearchPlacesToVisitActivity">
 
     <LinearLayout
         android:layout_margin="5dp"
@@ -21,14 +21,14 @@
             <EditText
                 android:hint="Search near"
                 android:layout_margin="5dp"
-                android:id="@+id/etSearchhNear"
+                android:id="@+id/etSearchPlaceNear"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
         </android.support.design.widget.TextInputLayout>
 
         <Button
             android:layout_margin="5dp"
-            android:id="@+id/btnOk"
+            android:id="@+id/btnPlaceOk"
             android:text="OK"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -48,16 +48,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content">
             <EditText
-                android:hint="Enter hotel name"
+                android:hint="Enter some hint"
                 android:layout_margin="5dp"
-                android:id="@+id/etHotelName"
+                android:id="@+id/etPlaceName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
         </android.support.design.widget.TextInputLayout>
 
         <Button
             android:layout_margin="5dp"
-            android:id="@+id/btnSearchHotel"
+            android:id="@+id/btnSearchPlace"
             android:text="Search"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -74,8 +74,8 @@
 
         <Button
             android:layout_marginRight="5dp"
-            android:id="@+id/btnRecommendHotel"
-            android:text="View Recommended Hotels"
+            android:id="@+id/btnRecommendPlace"
+            android:text="View Recommended Places"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -84,8 +84,8 @@
 
         <Button
             android:layout_marginLeft="5dp"
-            android:id="@+id/btnViewAllHotels"
-            android:text="View All Hotels"
+            android:id="@+id/btnViewAllPlaces"
+            android:text="View All Places"
             android:padding="5dp"
             android:background="@color/colorMyYellow"
             android:layout_weight="1"
@@ -95,10 +95,9 @@
     </LinearLayout>
 
     <FrameLayout
-        android:id="@+id/fragmentHotelContainer"
+        android:id="@+id/fragmentPlaceContainer"
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></FrameLayout>
-
 
 </LinearLayout>

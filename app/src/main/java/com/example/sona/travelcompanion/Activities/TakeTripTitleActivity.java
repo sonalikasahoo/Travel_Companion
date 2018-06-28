@@ -4,7 +4,10 @@ import android.app.DatePickerDialog;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Parcel;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,13 +18,19 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.sona.travelcompanion.R;
+import com.google.android.gms.internal.firebase_auth.zzao;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.FirebaseUserMetadata;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.List;
 
 public class TakeTripTitleActivity extends AppCompatActivity {
 

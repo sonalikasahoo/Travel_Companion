@@ -41,6 +41,7 @@
         <activity android:name="com.example.sona.travelcompanion.Activities.SetDestinationActivity" />
         <activity android:name="com.example.sona.travelcompanion.Activities.SearchHotelsActivity" />
         <activity android:name="com.example.sona.travelcompanion.Activities.DisplayVenueDetailsActivity" />
+        <activity android:name="com.example.sona.travelcompanion.Activities.SearchPlacesToVisitActivity" />
 
         <provider
             android:name="com.squareup.picasso.PicassoProvider"

@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Fri Jun 29 01:08:25 IST 2018
+#Fri Jun 29 03:45:22 IST 2018
 2.base=E\:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\13
 5.set=DEX
 0.path=classes.dex

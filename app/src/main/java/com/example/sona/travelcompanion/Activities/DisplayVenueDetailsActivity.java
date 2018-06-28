@@ -34,7 +34,7 @@ public class DisplayVenueDetailsActivity extends AppCompatActivity {
     TextView tvVenueName, tvVenueAddress, tvVenueLikes, tvVenueTips;
     Button btnAddVenue;
     ImageView ivDisplayImage;
-    String tripName, putUnder, venueId;
+    String tripName, placeUnder, venueId;
     FirebaseUser firebaseUser;
     DatabaseReference dbReference;
     String venueName;
@@ -54,12 +54,12 @@ public class DisplayVenueDetailsActivity extends AppCompatActivity {
 
         Intent intentWhoCreatedThis = getIntent();
         tripName = intentWhoCreatedThis.getStringExtra("tripName");
-        putUnder = intentWhoCreatedThis.getStringExtra("putUnder");
+        placeUnder = intentWhoCreatedThis.getStringExtra("placeUnder");
         venueId = intentWhoCreatedThis.getStringExtra("venueId");
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         dbReference = FirebaseDatabase.getInstance().getReference().child("users")
-                .child(firebaseUser.getUid()).child(tripName).child(putUnder);
+                .child(firebaseUser.getUid()).child(tripName).child(placeUnder);
 
 
         //make a network call to display all details of a venue
@@ -141,16 +141,19 @@ public class DisplayVenueDetailsActivity extends AppCompatActivity {
                             tvVenueTips.setText("Not Available");
 
                         //setting the image
-                        String prefix = specificVenue.getResponse().getVenue()
-                                .getBestPhoto().getPrefix();
-                        int height = specificVenue.getResponse().getVenue()
-                                .getBestPhoto().getHeight();
-                        int width = specificVenue.getResponse().getVenue()
-                                .getBestPhoto().getWidth();
-                        String suffix = specificVenue.getResponse().getVenue()
-                                .getBestPhoto().getSuffix();
-                        String photoUrl = prefix+height+"x"+width+suffix;
-                        Picasso.get().load(photoUrl).into(ivDisplayImage);
+                        if(specificVenue.getResponse().getVenue().getBestPhoto() != null) {
+
+                            String prefix = specificVenue.getResponse().getVenue()
+                                    .getBestPhoto().getPrefix();
+                            int height = specificVenue.getResponse().getVenue()
+                                    .getBestPhoto().getHeight();
+                            int width = specificVenue.getResponse().getVenue()
+                                    .getBestPhoto().getWidth();
+                            String suffix = specificVenue.getResponse().getVenue()
+                                    .getBestPhoto().getSuffix();
+                            String photoUrl = prefix + height + "x" + width + suffix;
+                            Picasso.get().load(photoUrl).into(ivDisplayImage);
+                        }
 
                     }
                 });
