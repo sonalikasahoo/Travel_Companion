@@ -1,5 +1,6 @@
 package com.example.sona.travelcompanion.Activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -36,12 +37,16 @@ public class SearchHotelsActivity extends AppCompatActivity {
     Button btnOk, btnSearchHotel, btnRecommendHotel, btnViewAllHotels;
     String location;
     String hotelName;
+    String tripName;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_hotels);
+
+        Intent intentWhoCreatedThis = getIntent();
+        tripName = intentWhoCreatedThis.getStringExtra("tripName");
 
         etSearchhNear = findViewById(R.id.etSearchhNear);
         etHotelName = findViewById(R.id.etHotelName);
@@ -79,7 +84,7 @@ public class SearchHotelsActivity extends AppCompatActivity {
                             "Enter hotel name first!!!", Toast.LENGTH_SHORT).show();
                 } else {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragmentHotelContainer,
-                            new ViewAllHotelsFragment(location, hotelName)).commit();
+                            new ViewAllHotelsFragment(tripName, location, hotelName)).commit();
                 }
             }
         });
@@ -92,7 +97,7 @@ public class SearchHotelsActivity extends AppCompatActivity {
                             "Enter a location first!!!", Toast.LENGTH_SHORT).show();
                 } else {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragmentHotelContainer,
-                            new RecommendedHotelsFragment(location)).commit();
+                            new RecommendedHotelsFragment(tripName, location)).commit();
                 }
             }
         });
@@ -105,7 +110,7 @@ public class SearchHotelsActivity extends AppCompatActivity {
                             "Enter a location first!!!", Toast.LENGTH_SHORT).show();
                 } else {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragmentHotelContainer,
-                            new ViewAllHotelsFragment(location)).commit();
+                            new ViewAllHotelsFragment(tripName,location)).commit();
                 }
             }
         });

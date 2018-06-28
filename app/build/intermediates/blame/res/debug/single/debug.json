@@ -1764,6 +1764,10 @@
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\1168375566c7ae9712ff8a527194082a\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
     },
     {
+        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable_reason_icon.png.flat",
+        "source": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\src\\main\\res\\drawable\\reason_icon.png"
+    },
+    {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\menu_menu_main.xml.flat",
         "source": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\src\\main\\res\\menu\\menu_main.xml"
     },
@@ -1778,6 +1782,10 @@
     {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\1168375566c7ae9712ff8a527194082a\\res\\drawable-xhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable_like_icon.png.flat",
+        "source": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\src\\main\\res\\drawable\\like_icon.png"
     },
     {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_fui_idp_button_background_twitter.xml.flat",
@@ -1906,6 +1914,10 @@
     {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_select_dialog_material.xml.flat",
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\1168375566c7ae9712ff8a527194082a\\res\\layout\\abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable_address_icon.png.flat",
+        "source": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\src\\main\\res\\drawable\\address_icon.png"
     },
     {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_check_email_layout.xml.flat",
@@ -2136,6 +2148,10 @@
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\1168375566c7ae9712ff8a527194082a\\res\\drawable-mdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
     },
     {
+        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable_tips_icon.png.flat",
+        "source": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\src\\main\\res\\drawable\\tips_icon.png"
+    },
+    {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\f58c44572e386bcf46aaffeb1c8971c6\\res\\drawable-xxhdpi-v4\\common_google_signin_btn_text_dark_normal_background.9.png"
     },
@@ -2202,6 +2218,10 @@
     {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_action_menu_layout.xml.flat",
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\1168375566c7ae9712ff8a527194082a\\res\\layout\\abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable_best_photo_icon.png.flat",
+        "source": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\src\\main\\res\\drawable\\best_photo_icon.png"
     },
     {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_text_select_handle_right_mtrl_light.png.flat",

@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import com.example.sona.travelcompanion.APIs.FourSquareVenuesExplore;
 import com.example.sona.travelcompanion.APIs.FourSquareVenuesExploreItems;
 import com.example.sona.travelcompanion.APIs.FourSquareVenuesExploreItemsVenues;
+import com.example.sona.travelcompanion.Activities.DisplayVenueDetailsActivity;
 import com.example.sona.travelcompanion.Activities.SingleTripActivity;
 import com.example.sona.travelcompanion.Adapters.RecommendedHotelDisplayAdapter;
 import com.example.sona.travelcompanion.Listeners.RecyclerViewItemClickListener;
@@ -39,6 +40,7 @@ public class RecommendedHotelsFragment extends Fragment {
     RecommendedHotelDisplayAdapter recommendedHotelDisplayAdapter;
     String location;
     RecyclerView rvRecommendedHotels;
+    String tripName;
 
 
     public RecommendedHotelsFragment() {
@@ -46,8 +48,9 @@ public class RecommendedHotelsFragment extends Fragment {
     }
 
     @SuppressLint("ValidFragment")
-    public RecommendedHotelsFragment(String location) {
+    public RecommendedHotelsFragment(String tripName, String location) {
         this.location = location;
+        this.tripName = tripName;
     }
 
     @Override
@@ -67,9 +70,11 @@ public class RecommendedHotelsFragment extends Fragment {
                 new RecyclerViewItemClickListener(container.getContext(), rvRecommendedHotels ,new RecyclerViewItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         // do whatever
-                        /*Intent i = new Intent(getActivity(), SingleTripActivity.class);
-                        i.putExtra("tripName", allRecommendedHotels.get(position).getTripTitle());
-                        startActivity(i);*/
+                        Intent i = new Intent(getActivity(), DisplayVenueDetailsActivity.class);
+                        i.putExtra("tripName", tripName);
+                        i.putExtra("putUnder","hotel");
+                        i.putExtra("venueId", allRecommendedHotels.get(position).getVenue().getId());
+                        startActivity(i);
                     }
 
                     @Override public void onLongItemClick(View view, int position) {

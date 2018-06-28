@@ -2,6 +2,7 @@ package com.example.sona.travelcompanion.Fragments;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import com.example.sona.travelcompanion.APIs.FourSquareVenuesExplore;
 import com.example.sona.travelcompanion.APIs.FourSquareVenuesSearch;
 import com.example.sona.travelcompanion.APIs.FourSquareVenuesSearchElement;
+import com.example.sona.travelcompanion.Activities.DisplayVenueDetailsActivity;
 import com.example.sona.travelcompanion.Adapters.RecommendedHotelDisplayAdapter;
 import com.example.sona.travelcompanion.Adapters.ViewAllHotelsAdapter;
 import com.example.sona.travelcompanion.Listeners.RecyclerViewItemClickListener;
@@ -36,6 +38,7 @@ public class ViewAllHotelsFragment extends Fragment {
     String hotelHint;
     RecyclerView rvViewAllHotels;
     ViewAllHotelsAdapter viewAllHotelsAdapter;
+    String tripName;
     ArrayList<FourSquareVenuesSearchElement> allHotels = new ArrayList<>();
 
 
@@ -44,13 +47,15 @@ public class ViewAllHotelsFragment extends Fragment {
     }
 
     @SuppressLint("ValidFragment")
-    public ViewAllHotelsFragment(String location) {
+    public ViewAllHotelsFragment(String tripName, String location) {
+        this.tripName = tripName;
         this.location = location;
         this.hotelHint = "";
     }
 
     @SuppressLint("ValidFragment")
-    public ViewAllHotelsFragment(String location, String hotelHint) {
+    public ViewAllHotelsFragment(String tripName, String location, String hotelHint) {
+        this.tripName = tripName;
         this.location = location;
         this.hotelHint = hotelHint;
     }
@@ -70,9 +75,11 @@ public class ViewAllHotelsFragment extends Fragment {
                 new RecyclerViewItemClickListener(container.getContext(), rvViewAllHotels ,new RecyclerViewItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         // do whatever
-                        /*Intent i = new Intent(getActivity(), SingleTripActivity.class);
-                        i.putExtra("tripName", allRecommendedHotels.get(position).getTripTitle());
-                        startActivity(i);*/
+                        Intent i = new Intent(getActivity(), DisplayVenueDetailsActivity.class);
+                        i.putExtra("tripName", tripName);
+                        i.putExtra("putUnder","hotel");
+                        i.putExtra("venueId", allHotels.get(position).getId());
+                        startActivity(i);
                     }
 
                     @Override public void onLongItemClick(View view, int position) {
