@@ -40,7 +40,7 @@ public class RecommendedVenuesFragment extends Fragment {
     RecommendedHotelDisplayAdapter recommendedHotelDisplayAdapter;
     String location;
     RecyclerView rvRecommendedHotels;
-    String tripName, placeUnder;
+    String tripId, placeUnder;
 
 
     public RecommendedVenuesFragment() {
@@ -48,10 +48,10 @@ public class RecommendedVenuesFragment extends Fragment {
     }
 
     @SuppressLint("ValidFragment")
-    public RecommendedVenuesFragment(String tripName, String placeUnder, String location) {
+    public RecommendedVenuesFragment(String tripId, String placeUnder, String location) {
         this.placeUnder = placeUnder;
         this.location = location;
-        this.tripName = tripName;
+        this.tripId = tripId;
     }
 
     @Override
@@ -72,7 +72,7 @@ public class RecommendedVenuesFragment extends Fragment {
                     @Override public void onItemClick(View view, int position) {
                         // do whatever
                         Intent i = new Intent(getActivity(), DisplayVenueDetailsActivity.class);
-                        i.putExtra("tripName", tripName);
+                        i.putExtra("tripId", tripId);
                         i.putExtra("placeUnder",placeUnder);
                         i.putExtra("venueId", allRecommendedHotels.get(position).getVenue().getId());
                         startActivity(i);

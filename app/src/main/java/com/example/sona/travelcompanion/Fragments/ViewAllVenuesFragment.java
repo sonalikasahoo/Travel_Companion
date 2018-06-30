@@ -38,7 +38,7 @@ public class ViewAllVenuesFragment extends Fragment {
     String hotelHint;
     RecyclerView rvViewAllHotels;
     ViewAllHotelsAdapter viewAllHotelsAdapter;
-    String tripName, placeUnder;
+    String tripId, placeUnder;
     ArrayList<FourSquareVenuesSearchElement> allHotels = new ArrayList<>();
 
 
@@ -47,17 +47,17 @@ public class ViewAllVenuesFragment extends Fragment {
     }
 
     @SuppressLint("ValidFragment")
-    public ViewAllVenuesFragment(String tripName, String placeUnder, String location) {
+    public ViewAllVenuesFragment(String tripId, String placeUnder, String location) {
         this.placeUnder = placeUnder;
-        this.tripName = tripName;
+        this.tripId = tripId;
         this.location = location;
         this.hotelHint = "";
     }
 
     @SuppressLint("ValidFragment")
-    public ViewAllVenuesFragment(String tripName, String placeUnder, String location, String hotelHint) {
+    public ViewAllVenuesFragment(String tripId, String placeUnder, String location, String hotelHint) {
         this.placeUnder = placeUnder;
-        this.tripName = tripName;
+        this.tripId = tripId;
         this.location = location;
         this.hotelHint = hotelHint;
     }
@@ -78,7 +78,7 @@ public class ViewAllVenuesFragment extends Fragment {
                     @Override public void onItemClick(View view, int position) {
                         // do whatever
                         Intent i = new Intent(getActivity(), DisplayVenueDetailsActivity.class);
-                        i.putExtra("tripName", tripName);
+                        i.putExtra("tripId", tripId);
                         i.putExtra("placeUnder",placeUnder);
                         i.putExtra("venueId", allHotels.get(position).getId());
                         startActivity(i);

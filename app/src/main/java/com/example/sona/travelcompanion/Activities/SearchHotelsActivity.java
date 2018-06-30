@@ -30,7 +30,7 @@ public class SearchHotelsActivity extends AppCompatActivity {
     Button btnOk, btnSearchHotel, btnRecommendHotel, btnViewAllHotels;
     String location;
     String hotelName;
-    String tripName;
+    String tripId;
     String placeUnder;
 
 
@@ -40,7 +40,7 @@ public class SearchHotelsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_hotels);
 
         Intent intentWhoCreatedThis = getIntent();
-        tripName = intentWhoCreatedThis.getStringExtra("tripName");
+        tripId = intentWhoCreatedThis.getStringExtra("tripId");
         placeUnder = intentWhoCreatedThis.getStringExtra("placeUnder");
 
         etSearchhNear = findViewById(R.id.etSearchhNear);
@@ -79,7 +79,7 @@ public class SearchHotelsActivity extends AppCompatActivity {
                             "Enter hotel name first!!!", Toast.LENGTH_SHORT).show();
                 } else {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragmentHotelContainer,
-                            new ViewAllVenuesFragment(tripName, placeUnder, location, hotelName)).commit();
+                            new ViewAllVenuesFragment(tripId, placeUnder, location, hotelName)).commit();
                 }
             }
         });
@@ -92,7 +92,7 @@ public class SearchHotelsActivity extends AppCompatActivity {
                             "Enter a location first!!!", Toast.LENGTH_SHORT).show();
                 } else {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragmentHotelContainer,
-                            new RecommendedVenuesFragment(tripName, placeUnder, location)).commit();
+                            new RecommendedVenuesFragment(tripId, placeUnder, location)).commit();
                 }
             }
         });
@@ -105,7 +105,7 @@ public class SearchHotelsActivity extends AppCompatActivity {
                             "Enter a location first!!!", Toast.LENGTH_SHORT).show();
                 } else {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragmentHotelContainer,
-                            new ViewAllVenuesFragment(tripName, placeUnder,location)).commit();
+                            new ViewAllVenuesFragment(tripId, placeUnder,location)).commit();
                 }
             }
         });

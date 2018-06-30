@@ -38,8 +38,8 @@ public class SingleTripActivity extends AppCompatActivity {
     SingleTripAdapter singleTripAdapter;
 
     TextView tvFromDateDisplay;
-    TextView tvToDateDisplay;
-    Button btnAddDeatils;
+    TextView tvToDateDisplay, tvDisplayTitle;
+    Button btnAddDeatils, btnTripPhotos;
     FirebaseUser firebaseUser;
     DatabaseReference dbReference;
 
@@ -49,13 +49,15 @@ public class SingleTripActivity extends AppCompatActivity {
         setContentView(R.layout.activity_single_trip);
 
         Intent intentWhoCreatedThis = getIntent();
-        final String tripName = intentWhoCreatedThis.getStringExtra("tripName");
+        final String tripId = intentWhoCreatedThis.getStringExtra("tripId");
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         tvFromDateDisplay = findViewById(R.id.tvFromDateDisplay);
         tvToDateDisplay = findViewById(R.id.tvToDateDisplay);
         btnAddDeatils = findViewById(R.id.btnAddDeatils);
+        tvDisplayTitle = findViewById(R.id.tvDisplayTitle);
+        btnTripPhotos = findViewById(R.id.btnTripPhotos);
 
         RecyclerView rvSingleTripEle = findViewById(R.id.rvSingleTripEle);
         rvSingleTripEle.setLayoutManager(new GridLayoutManager(this, 1));
@@ -64,7 +66,7 @@ public class SingleTripActivity extends AppCompatActivity {
 
 
          dbReference = FirebaseDatabase.getInstance().getReference().child("users")
-                .child(firebaseUser.getUid()).child(tripName);
+                .child(firebaseUser.getUid()).child("alltrips").child(tripId);
 
          callListener();
 
@@ -81,15 +83,15 @@ public class SingleTripActivity extends AppCompatActivity {
                 builder.setTitle("Choose an Item");
 
                 // add a list
-                String[] animals = {"Destination", "Flight", "Hotel", "Places To Visit",
-                        "Shopping List", "Finance", "Note", "Checklist"};
-                builder.setItems(animals, new DialogInterface.OnClickListener() {
+                String[] menu = {"Destination", "Flight", "Hotel", "Places To Visit",
+                        "Photos", "Shopping List", "Finance", "Note", "Checklist"};
+                builder.setItems(menu, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
                             case 0:
                                 Intent i = new Intent(SingleTripActivity.this, SetDestinationActivity.class);
-                                i.putExtra("tripName", tripName);
+                                i.putExtra("tripId", tripId);
                                 startActivity(i);
                                 break;
                             case 1: takeFlightInput();
@@ -97,28 +99,37 @@ public class SingleTripActivity extends AppCompatActivity {
                             case 2:
                                 Intent ii = new Intent(SingleTripActivity.this,
                                         SearchHotelsActivity.class);
-                                ii.putExtra("tripName", tripName);
+                                ii.putExtra("tripId", tripId);
                                 ii.putExtra("placeUnder", "hotel");
                                 startActivity(ii);
                                 break;
                             case 3:
                                 Intent iii = new Intent(SingleTripActivity.this,
                                         SearchPlacesToVisitActivity.class);
-                                iii.putExtra("tripName", tripName);
+                                iii.putExtra("tripId", tripId);
                                 iii.putExtra("placeUnder", "places to visit");
                                 startActivity(iii);
                                 break;
-                            case 4: break;
+                            case 4:
+                                Intent i4 = new Intent(SingleTripActivity.this, UploadPhotoActivity.class);
+                                i4.putExtra("tripId", tripId);
+                                startActivity(i4);
+                                break;
                         }
                     }
                 });
 
                 AlertDialog dialog = builder.create();
                 dialog.show();
+            }
+        });
 
-                /*Intent i = new Intent(SingleTripActivity.this, SetDestinationActivity.class);
-                i.putExtra("tripName", tripName);
-                startActivity(i);*/
+        btnTripPhotos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SingleTripActivity.this, TripPhotosActivity.class);
+                i.putExtra("tripId", tripId);
+                startActivity(i);
             }
         });
 
@@ -168,19 +179,19 @@ public class SingleTripActivity extends AppCompatActivity {
 
                 allSingleTripElements.clear();
 
-                for(DataSnapshot dataSnapshot1: dataSnapshot.child("fromdate").getChildren()) {
-                    String fromDate = dataSnapshot1.getValue().toString();
-                    tvFromDateDisplay.setText("From: " + fromDate);
-                }
-                for(DataSnapshot dataSnapshot1: dataSnapshot.child("todate").getChildren()) {
-                    String toDate = dataSnapshot1.getValue().toString();
-                    tvToDateDisplay.setText("To: " + toDate);
-                }
+                String tripTitle = dataSnapshot.child("trip title").getValue().toString();
+                String fromDate = dataSnapshot.child("fromdate").getValue().toString();
+                String toDate = dataSnapshot.child("todate").getValue().toString();
+                tvFromDateDisplay.setText("From: " + fromDate);
+                tvToDateDisplay.setText("To: "+toDate);
+                tvDisplayTitle.setText(tripTitle);
 
-                //setting all emlements for the recycler view
+
+                //setting all elements for the recycler view
                 for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
                     String title = dataSnapshot1.getKey();
-                    if(title.equals("todate") || title.equals("fromdate"))
+                    if(title.equals("todate") || title.equals("fromdate")
+                            || title.equals("trip title"))
                         continue;
                     String item = "";
                     for(DataSnapshot dataSnapshot2: dataSnapshot1.getChildren()) {

@@ -5,16 +5,26 @@ package com.example.sona.travelcompanion.Pojos;
  */
 
 public class MyPlansElements {
+    String tripId;
     String tripTitle;
     String destination;
     String hotel;
     String flight_train;
 
-    public MyPlansElements(String tripTitle) {
+    public MyPlansElements(String tripId, String tripTitle) {
+        this.tripId = tripId;
         this.tripTitle = tripTitle;
         this.destination = "Destination";
         this.hotel = "Hotel";
         this.flight_train = "Flight/Train";
+    }
+
+    public String getTripId() {
+        return tripId;
+    }
+
+    public void setTripId(String tripId) {
+        this.tripId = tripId;
     }
 
     public String getTripTitle() {

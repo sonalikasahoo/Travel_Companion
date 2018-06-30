@@ -31,7 +31,7 @@ public class SetDestinationActivity extends AppCompatActivity {
     Button btnSaveDestination;
 
     FirebaseUser firebaseUser;
-    String tripName;
+    String tripId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class SetDestinationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_set_destination);
 
         Intent intentWhoCreatedThis = getIntent();
-        tripName = intentWhoCreatedThis.getStringExtra("tripName");
+        tripId = intentWhoCreatedThis.getStringExtra("tripId");
 
         etDestination = findViewById(R.id.etDestination);
         btnSaveDestination = findViewById(R.id.btnSaveDestination);
@@ -48,7 +48,13 @@ public class SetDestinationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String destination = etDestination.getText().toString();
-                makeNetworkCall(destination);
+                if(destination.length() == 0 ) {
+                    Toast.makeText(SetDestinationActivity.this,
+                            "Enter a destination first", Toast.LENGTH_SHORT).show();
+                } else {
+                    makeNetworkCall(destination);
+                }
+
             }
         });
 
@@ -87,7 +93,7 @@ public class SetDestinationActivity extends AppCompatActivity {
                 } else {
                     firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                     DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference().child("users")
-                            .child(firebaseUser.getUid()).child(tripName);
+                            .child(firebaseUser.getUid()).child("alltrips").child(tripId);
                     dbReference.child("destination").push().setValue(destination);
 
                     SetDestinationActivity.this.runOnUiThread(new Runnable() {
@@ -100,7 +106,7 @@ public class SetDestinationActivity extends AppCompatActivity {
                     });
                     Intent i = new Intent(SetDestinationActivity.this,
                             SingleTripActivity.class);
-                    i.putExtra("tripName",tripName);
+                    i.putExtra("tripId",tripId);
                     startActivity(i);
                 }
 

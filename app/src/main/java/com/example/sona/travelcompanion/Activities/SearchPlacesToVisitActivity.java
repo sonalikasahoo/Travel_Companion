@@ -29,7 +29,7 @@ public class SearchPlacesToVisitActivity extends AppCompatActivity {
     Button btnPlaceOk, btnSearchPlace, btnRecommendPlace, btnViewAllPlaces;
     String location;
     String placeName;
-    String tripName, placeUnder;
+    String tripId, placeUnder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class SearchPlacesToVisitActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_places_to_visit);
 
         Intent intentWhoCreatedThis = getIntent();
-        tripName = intentWhoCreatedThis.getStringExtra("tripName");
+        tripId = intentWhoCreatedThis.getStringExtra("tripId");
         placeUnder = intentWhoCreatedThis.getStringExtra("placeUnder");
 
         etSearchPlaceNear = findViewById(R.id.etSearchPlaceNear);
@@ -75,7 +75,7 @@ public class SearchPlacesToVisitActivity extends AppCompatActivity {
                             "Enter place name first!!!", Toast.LENGTH_SHORT).show();
                 } else {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragmentPlaceContainer,
-                            new ViewAllVenuesFragment(tripName, placeUnder, location, placeName)).commit();
+                            new ViewAllVenuesFragment(tripId, placeUnder, location, placeName)).commit();
                 }
             }
         });
@@ -88,7 +88,7 @@ public class SearchPlacesToVisitActivity extends AppCompatActivity {
                             "Enter a location first!!!", Toast.LENGTH_SHORT).show();
                 } else {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragmentPlaceContainer,
-                            new RecommendedVenuesFragment(tripName, placeUnder, location)).commit();
+                            new RecommendedVenuesFragment(tripId, placeUnder, location)).commit();
                 }
             }
         });
@@ -101,7 +101,7 @@ public class SearchPlacesToVisitActivity extends AppCompatActivity {
                             "Enter a location first!!!", Toast.LENGTH_SHORT).show();
                 } else {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragmentPlaceContainer,
-                            new ViewAllVenuesFragment(tripName, placeUnder,location)).commit();
+                            new ViewAllVenuesFragment(tripId, placeUnder,location)).commit();
                 }
             }
         });

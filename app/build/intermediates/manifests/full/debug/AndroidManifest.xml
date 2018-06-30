@@ -9,6 +9,7 @@
         android:targetSdkVersion="27" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" /> <!-- Required by older versions of Google Play services to create IID tokens -->
@@ -42,6 +43,8 @@
         <activity android:name="com.example.sona.travelcompanion.Activities.SearchHotelsActivity" />
         <activity android:name="com.example.sona.travelcompanion.Activities.DisplayVenueDetailsActivity" />
         <activity android:name="com.example.sona.travelcompanion.Activities.SearchPlacesToVisitActivity" />
+        <activity android:name="com.example.sona.travelcompanion.Activities.TripPhotosActivity" />
+        <activity android:name="com.example.sona.travelcompanion.Activities.UploadPhotoActivity" />
 
         <provider
             android:name="com.squareup.picasso.PicassoProvider"

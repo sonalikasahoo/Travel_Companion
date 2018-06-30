@@ -34,7 +34,7 @@ public class DisplayVenueDetailsActivity extends AppCompatActivity {
     TextView tvVenueName, tvVenueAddress, tvVenueLikes, tvVenueTips;
     Button btnAddVenue;
     ImageView ivDisplayImage;
-    String tripName, placeUnder, venueId;
+    String tripId, placeUnder, venueId;
     FirebaseUser firebaseUser;
     DatabaseReference dbReference;
     String venueName;
@@ -53,13 +53,14 @@ public class DisplayVenueDetailsActivity extends AppCompatActivity {
         venueName = "";
 
         Intent intentWhoCreatedThis = getIntent();
-        tripName = intentWhoCreatedThis.getStringExtra("tripName");
+        tripId = intentWhoCreatedThis.getStringExtra("tripId");
         placeUnder = intentWhoCreatedThis.getStringExtra("placeUnder");
         venueId = intentWhoCreatedThis.getStringExtra("venueId");
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         dbReference = FirebaseDatabase.getInstance().getReference().child("users")
-                .child(firebaseUser.getUid()).child(tripName).child(placeUnder);
+                .child(firebaseUser.getUid()).child("alltrips")
+                .child(tripId).child(placeUnder);
 
 
         //make a network call to display all details of a venue
@@ -74,7 +75,7 @@ public class DisplayVenueDetailsActivity extends AppCompatActivity {
 
                 Intent i = new Intent(DisplayVenueDetailsActivity.this,
                         SingleTripActivity.class);
-                i.putExtra("tripName",tripName);
+                i.putExtra("tripId",tripId);
                 startActivity(i);
             }
         });

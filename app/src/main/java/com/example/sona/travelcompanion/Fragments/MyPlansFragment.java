@@ -60,7 +60,7 @@ public class MyPlansFragment extends Fragment {
                     @Override public void onItemClick(View view, int position) {
                         // do whatever
                         Intent i = new Intent(getActivity(), SingleTripActivity.class);
-                        i.putExtra("tripName", myPlansElements.get(position).getTripTitle());
+                        i.putExtra("tripId", myPlansElements.get(position).getTripId());
                         startActivity(i);
                     }
 
@@ -91,7 +91,7 @@ public class MyPlansFragment extends Fragment {
         myPlansElements.clear();
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference().child("users")
-                .child(firebaseUser.getUid());
+                .child(firebaseUser.getUid()).child("alltrips");
 
         dbReference.addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -100,28 +100,31 @@ public class MyPlansFragment extends Fragment {
 
 
                 for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
-                    String title = dataSnapshot1.getKey();
+                    String tripId = dataSnapshot1.getKey();
+                    String tripTitle = dataSnapshot1.child("trip title").getValue().toString();
                     String destination = "";
-                    for (DataSnapshot dataSnapshot2: dataSnapshot1.child("destination").getChildren()) {
+                    String flight = "";
+                    String hotel = "";
+
+                    for(DataSnapshot dataSnapshot2: dataSnapshot1.child("destination").getChildren()) {
                         if(destination.length() != 0)
                             destination = destination + ", ";
                         String temp1 = dataSnapshot2.getValue().toString();
                         String firstChar = temp1.charAt(0)+"";
                         destination = destination + firstChar.toUpperCase()+temp1.substring(1);
                     }
-                    String flight = "";
                     for (DataSnapshot dataSnapshot2: dataSnapshot1.child("flight").getChildren()) {
                         if(flight.length() !=0)
                             flight = ", ";
                         flight = flight + dataSnapshot2.getValue();
                     }
-                    String hotel = "";
                     for (DataSnapshot dataSnapshot2: dataSnapshot1.child("hotel").getChildren()) {
                         if(hotel.length() != 0)
                             hotel = hotel + ", ";
                         hotel = hotel + dataSnapshot2.getValue();
                     }
-                    MyPlansElements temp = new MyPlansElements(title);
+
+                    MyPlansElements temp = new MyPlansElements(tripId, tripTitle);
                     if(destination.length() != 0)
                         temp.setDestination(destination);
                     if(hotel.length() != 0)

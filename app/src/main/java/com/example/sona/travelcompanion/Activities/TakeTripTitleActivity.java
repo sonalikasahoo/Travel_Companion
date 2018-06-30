@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.sona.travelcompanion.R;
 import com.google.android.gms.internal.firebase_auth.zzao;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -71,29 +72,28 @@ public class TakeTripTitleActivity extends AppCompatActivity {
                 final String tripTitle = etTripTitle.getText().toString();
                 final String fromDate = etFromDate.getText().toString();
                 final String toDate = etToDate.getText().toString();
-                Log.d("pikachu", "onClick: "+tripTitle+" "+fromDate+" "+toDate);
-                final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-                final DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference();
-                dbReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if(dataSnapshot.child("users").hasChild(firebaseUser.getUid()) &&
-                                dataSnapshot.child("users").child(firebaseUser.getUid()).hasChild(tripTitle.toLowerCase())) {
-                            etTripTitle.setText("");
-                            Toast.makeText(TakeTripTitleActivity.this, "This trip name already exists!!", Toast.LENGTH_SHORT).show();
-                        } else {
-                            dbReference.child("users").child(firebaseUser.getUid()).child(tripTitle).child("fromdate").push().setValue(fromDate);
-                            dbReference.child("users").child(firebaseUser.getUid()).child(tripTitle).child("todate").push().setValue(toDate);
-                            Intent i = new Intent(TakeTripTitleActivity.this, MainActivity.class);
-                            startActivity(i);
-                        }
-                    }
+                if(fromDate.length()==0 || toDate.length()==0) {
+                    Toast.makeText(TakeTripTitleActivity.this,
+                            "Enter start and end date first", Toast.LENGTH_SHORT).show();
+                } else {
+                    Log.d("pikachu", "onClick: "+tripTitle+" "+fromDate+" "+toDate);
+                    final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                    final DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference();
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    String generatedId = dbReference.child("users").child(firebaseUser.getUid())
+                            .push().getKey();
 
-                    }
-                });
+                    dbReference.child("users").child(firebaseUser.getUid()).child("alltrips")
+                            .child(generatedId).child("trip title").setValue(tripTitle);
+                    DatabaseReference dbReference2 = dbReference.child("users").child(firebaseUser.getUid())
+                            .child("alltrips").child(generatedId);
+                    dbReference2.child("fromdate").setValue(fromDate);
+                    dbReference2.child("todate").setValue(toDate);
+
+                    Intent i = new Intent(TakeTripTitleActivity.this, MainActivity.class);
+                    startActivity(i);
+                }
+
             }
         });
 

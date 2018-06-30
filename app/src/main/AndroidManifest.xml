@@ -3,6 +3,7 @@
     package="com.example.sona.travelcompanion">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -23,7 +24,9 @@
         <activity android:name=".Activities.SetDestinationActivity" />
         <activity android:name=".Activities.SearchHotelsActivity" />
         <activity android:name=".Activities.DisplayVenueDetailsActivity" />
-        <activity android:name=".Activities.SearchPlacesToVisitActivity"></activity>
+        <activity android:name=".Activities.SearchPlacesToVisitActivity" />
+        <activity android:name=".Activities.TripPhotosActivity" />
+        <activity android:name=".Activities.UploadPhotoActivity"></activity>
     </application>
 
 </manifest>
