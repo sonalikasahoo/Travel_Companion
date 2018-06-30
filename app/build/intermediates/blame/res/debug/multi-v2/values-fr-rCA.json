@@ -4,24 +4,7 @@
             "outputFile": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-fr-rCA\\values-fr-rCA.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-15.0.1.aar\\5ef0d692e094e4a26a2bbd8d97421027\\res\\values-fr-rCA\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "251",
-                        "endColumns": "219",
-                        "endOffsets": "470"
-                    },
-                    "to": {
-                        "startLines": "27",
-                        "startColumns": "4",
-                        "startOffsets": "3158",
-                        "endColumns": "219",
-                        "endOffsets": "3373"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\f58c44572e386bcf46aaffeb1c8971c6\\res\\values-fr-rCA\\values.xml",
+                    "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\1acdd91c57078b329574d5c7fabe4f86\\res\\values-fr-rCA\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -38,24 +21,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\fae95f5816e6e12cbb18092b156fc523\\res\\values-fr-rCA\\values-fr-rCA.xml",
+                    "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-15.0.1.aar\\041152da1deabacc6e497a54c9fc1d3d\\res\\values-fr-rCA\\values.xml",
                     "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "251",
+                        "endColumns": "219",
+                        "endOffsets": "470"
                     },
                     "to": {
-                        "startLines": "38",
+                        "startLines": "27",
                         "startColumns": "4",
-                        "startOffsets": "4924",
-                        "endColumns": "100",
-                        "endOffsets": "5020"
+                        "startOffsets": "3158",
+                        "endColumns": "219",
+                        "endOffsets": "3373"
                     }
                 },
                 {
-                    "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\1168375566c7ae9712ff8a527194082a\\res\\values-fr-rCA\\values-fr-rCA.xml",
+                    "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\values-fr-rCA\\values-fr-rCA.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -69,6 +52,23 @@
                         "startOffsets": "105,216,331,442,529,645,775,858,938,1034,1144,1256,1359,1470,1577,1679,1838,4838",
                         "endColumns": "110,114,110,86,115,129,82,79,95,109,111,102,110,106,101,158,98,85",
                         "endOffsets": "211,326,437,524,640,770,853,933,1029,1139,1251,1354,1465,1572,1674,1833,1932,4919"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\111625796f0498bfedba5db94c64e713\\res\\values-fr-rCA\\values-fr-rCA.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "38",
+                        "startColumns": "4",
+                        "startOffsets": "4924",
+                        "endColumns": "100",
+                        "endOffsets": "5020"
                     }
                 }
             ]

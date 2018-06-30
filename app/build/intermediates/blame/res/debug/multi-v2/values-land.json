@@ -4,7 +4,7 @@
             "outputFile": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\1168375566c7ae9712ff8a527194082a\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\de52d2bfd7716ae2025a2fb24f27d251\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\fe86343237b50d5ab9dac27d6dee2fe1\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -27,6 +27,9 @@
         <activity android:name=".Activities.SearchPlacesToVisitActivity" />
         <activity android:name=".Activities.TripPhotosActivity" />
         <activity android:name=".Activities.UploadPhotoActivity"></activity>
+        <meta-data
+            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+            android:value="label" />
     </application>
 
 </manifest>

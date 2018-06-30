@@ -46,6 +46,10 @@
         <activity android:name="com.example.sona.travelcompanion.Activities.TripPhotosActivity" />
         <activity android:name="com.example.sona.travelcompanion.Activities.UploadPhotoActivity" />
 
+        <meta-data
+            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+            android:value="label" />
+
         <provider
             android:name="com.squareup.picasso.PicassoProvider"
             android:authorities="com.example.sona.travelcompanion.com.squareup.picasso"

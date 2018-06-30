@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sona.travelcompanion.Pojos.TripPhotosElements;
@@ -27,20 +28,28 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.ml.vision.FirebaseVision;
+import com.google.firebase.ml.vision.common.FirebaseVisionImage;
+import com.google.firebase.ml.vision.label.FirebaseVisionLabel;
+import com.google.firebase.ml.vision.label.FirebaseVisionLabelDetector;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.util.List;
 
 public class UploadPhotoActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 123;
     Button btnChoose, btnUpload;
     ImageView ivChosenImage;
+    TextView tvGeneratedCaption;
     Uri filePath;
     String tripId;
+    Bitmap bitmap;
+    String caption = "Has no Caption";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +62,7 @@ public class UploadPhotoActivity extends AppCompatActivity {
         btnChoose = findViewById(R.id.btnChoose);
         btnUpload = findViewById(R.id.btnUpload);
         ivChosenImage = findViewById(R.id.ivChosenImage);
+        tvGeneratedCaption = findViewById(R.id.tvGeneratedCaption);
 
         btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,8 +117,47 @@ public class UploadPhotoActivity extends AppCompatActivity {
             filePath = data.getData();
 
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),filePath);
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),filePath);
                 ivChosenImage.setImageBitmap(bitmap);
+
+
+                //Geneartingt the caption
+                FirebaseVisionImage image = FirebaseVisionImage.fromBitmap(bitmap);
+                FirebaseVisionLabelDetector detector = FirebaseVision.getInstance()
+                        .getVisionLabelDetector();
+                Task<List<FirebaseVisionLabel>> result =
+                        detector.detectInImage(image)
+                                .addOnSuccessListener(
+                                        new OnSuccessListener<List<FirebaseVisionLabel>>() {
+                                            @Override
+                                            public void onSuccess(List<FirebaseVisionLabel> labels) {
+                                                // Task completed successfully
+                                                float max = Float.MIN_VALUE;
+                                                String finalLabel = "";
+                                                for (FirebaseVisionLabel label: labels) {
+                                                    String text = label.getLabel();
+                                                    String entityId = label.getEntityId();
+                                                    float confidence = label.getConfidence();
+                                                    if(confidence > max) {
+                                                        max = confidence;
+                                                        finalLabel = text;
+                                                    }
+                                                }
+                                                tvGeneratedCaption.setText(finalLabel);
+                                                caption = finalLabel;
+                                            }
+                                        })
+                                .addOnFailureListener(
+                                        new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                // Task failed with an exception
+                                                // ...
+                                            }
+                                        });
+
+
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -116,6 +165,7 @@ public class UploadPhotoActivity extends AppCompatActivity {
     }
 
     void uploadFile() {
+
 
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         final StorageReference storageReference = FirebaseStorage.getInstance().getReference();
@@ -128,6 +178,10 @@ public class UploadPhotoActivity extends AppCompatActivity {
 
         final String fileName = System.currentTimeMillis() + "";
 
+
+
+
+        //storing the image in storage and updating the database
         storageReference.child("allPhotosUploads/"+fileName).putFile(filePath)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -137,7 +191,6 @@ public class UploadPhotoActivity extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Uri uri) {
                                         String photoUrl = uri.toString();
-                                        String caption = "Has no Caption";
                                         TripPhotosElements tripPhotosElements = new TripPhotosElements(
                                                 photoUrl, caption);
                                         DatabaseReference databaseReference = FirebaseDatabase.getInstance()

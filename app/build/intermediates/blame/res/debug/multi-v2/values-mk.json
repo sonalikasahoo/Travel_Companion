@@ -4,7 +4,7 @@
             "outputFile": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-mk\\values-mk.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-15.0.1.aar\\5ef0d692e094e4a26a2bbd8d97421027\\res\\values-mk\\values.xml",
+                    "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-15.0.1.aar\\041152da1deabacc6e497a54c9fc1d3d\\res\\values-mk\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\1168375566c7ae9712ff8a527194082a\\res\\values-mk\\values-mk.xml",
+                    "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\values-mk\\values-mk.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\f58c44572e386bcf46aaffeb1c8971c6\\res\\values-mk\\values.xml",
+                    "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\1acdd91c57078b329574d5c7fabe4f86\\res\\values-mk\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -55,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\fae95f5816e6e12cbb18092b156fc523\\res\\values-mk\\values-mk.xml",
+                    "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\111625796f0498bfedba5db94c64e713\\res\\values-mk\\values-mk.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
