@@ -1,6 +1,7 @@
 package com.example.sona.travelcompanion.Activities;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,12 +9,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.sona.travelcompanion.Fragments.MyPlansFragment;
+import com.example.sona.travelcompanion.Fragments.ViewPhotosFragment;
 import com.example.sona.travelcompanion.R;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
+import com.firebase.ui.auth.ui.idp.SingleSignInActivity;
+import com.google.android.gms.auth.api.signin.internal.SignInHubActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -84,12 +91,19 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.btnLogout:
-                //logout here
-                return true;
+                Log.d("pikachu", "onOptionsItemSelected: can logout here");
 
-            case R.id.btnAddTrip:
-                //Add a new Trip to the database
-                addListeners();
+                AuthUI.getInstance().signOut(this)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                startActivity(new Intent(MainActivity.this, MainActivity.class));
+                                finish();
+                                Toast.makeText(MainActivity.this,
+                                        "Successfully Logged Out!!!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
                 return true;
 
             default:
@@ -105,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         btnAdd.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                
+
                 return true;
             }
         });*/
@@ -114,11 +128,20 @@ public class MainActivity extends AppCompatActivity {
         btnMyPlans.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-                final DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference();
                 Log.d("pikachu", "onClick: Going to fragment pikachu");
                 getSupportFragmentManager().beginTransaction().replace(R.id.flFragContainer,
                         new MyPlansFragment()).commit();
+            }
+        });
+
+        Button btnViewAllPhotos;
+        btnViewAllPhotos = findViewById(R.id.btnViewAllPhotos);
+        btnViewAllPhotos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("pikachu", "onClick: Going to fragment pikachu");
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragContainer,
+                        new ViewPhotosFragment()).commit();
             }
         });
     }

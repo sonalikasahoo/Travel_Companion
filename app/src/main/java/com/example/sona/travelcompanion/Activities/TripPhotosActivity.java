@@ -24,7 +24,8 @@ import java.util.ArrayList;
 public class TripPhotosActivity extends AppCompatActivity {
 
     RecyclerView rvTripPhotos;
-    String tripId;
+    String tripId="";
+    String label="";
     ArrayList<TripPhotosElements> allPhotos;
     FirebaseUser firebaseUser;
     DatabaseReference databaseReference;
@@ -36,16 +37,20 @@ public class TripPhotosActivity extends AppCompatActivity {
 
         Intent intentWhoCreatedthis = getIntent();
         tripId = intentWhoCreatedthis.getStringExtra("tripId");
+        label = intentWhoCreatedthis.getStringExtra("label");
 
         allPhotos = new ArrayList<>();
 
         rvTripPhotos = findViewById(R.id.rvTripPhotos);
         rvTripPhotos.setLayoutManager(new GridLayoutManager(this, 1));
 
-        getAllPhotosAndSetAdpater();
+        if(label == null)
+            getAllTripPhotosAndSetAdpater();
+        else
+            getPhotos();
     }
 
-    void getAllPhotosAndSetAdpater() {
+    void getAllTripPhotosAndSetAdpater() {
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference()
@@ -59,6 +64,7 @@ public class TripPhotosActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
+
                     if(!dataSnapshot1.getKey().equals("photos"))
                         continue;
                     for(DataSnapshot dataSnapshot2: dataSnapshot1.child(tripId).getChildren()) {
@@ -81,5 +87,71 @@ public class TripPhotosActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    void getPhotos() {
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(label.equals("all")) {
+
+            final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference()
+                    .child("users").child(firebaseUser.getUid()).child("photodetails");
+
+            final TripPhotosAdapter tripPhotosAdapter = new TripPhotosAdapter(allPhotos);
+            rvTripPhotos.setAdapter(tripPhotosAdapter);
+            allPhotos.clear();
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
+                        String photoUrl = dataSnapshot1.child("photoUrl").getValue().toString();
+                        String caption = dataSnapshot1.child("caption").getValue().toString();
+
+                            TripPhotosElements oneEle = new TripPhotosElements(photoUrl, caption);
+                            allPhotos.add(oneEle);
+                            tripPhotosAdapter.notifyDataSetChanged();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        } else  {
+            final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference()
+                    .child("users").child(firebaseUser.getUid());
+
+            final TripPhotosAdapter tripPhotosAdapter = new TripPhotosAdapter(allPhotos);
+            rvTripPhotos.setAdapter(tripPhotosAdapter);
+            allPhotos.clear();
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
+
+                        if(!dataSnapshot1.getKey().equals("labels"))
+                            continue;
+                        for(DataSnapshot dataSnapshot2: dataSnapshot1.child(label).getChildren()) {
+                            String fileName = dataSnapshot2.getValue().toString();
+                            String photoUrl = dataSnapshot.child("photodetails").child(fileName)
+                                    .child("photoUrl").getValue().toString();
+                            String caption = dataSnapshot.child("photodetails").child(fileName)
+                                    .child("caption").getValue().toString();
+                            TripPhotosElements oneEle = new TripPhotosElements(photoUrl, caption);
+                            allPhotos.add(oneEle);
+                            tripPhotosAdapter.notifyDataSetChanged();
+                        }
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
     }
 }

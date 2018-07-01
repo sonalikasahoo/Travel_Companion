@@ -1,0 +1,40 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.sona.travelcompanion.Fragments.ViewPhotosFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <Button
+        android:layout_margin="5dp"
+        android:text="View All Photos"
+        android:padding="5dp"
+        android:id="@+id/btnAllPhotos"
+        android:background="@color/colorMyYellow"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:textSize="24sp"
+        android:text="OR"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="Choose a label"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvViewAllLabels"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

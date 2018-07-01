@@ -32,10 +32,6 @@
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\drawable-xxxhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
     },
     {
-        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable_add_icon.png.flat",
-        "source": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\src\\main\\res\\drawable\\add_icon.png"
-    },
-    {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\drawable-hdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png"
     },
@@ -136,12 +132,12 @@
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\drawable-xxhdpi-v4\\abc_ic_star_half_black_16dp.png"
     },
     {
-        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_list_selector_disabled_holo_dark.9.png.flat",
-        "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\drawable-mdpi-v4\\abc_list_selector_disabled_holo_dark.9.png"
-    },
-    {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_grow_fade_in_from_bottom.xml.flat",
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_list_selector_disabled_holo_dark.9.png.flat",
+        "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\drawable-mdpi-v4\\abc_list_selector_disabled_holo_dark.9.png"
     },
     {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
@@ -180,12 +176,12 @@
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\drawable-xxxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
-        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable_fui_ic_googleg_color_24dp.xml.flat",
-        "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.1.aar\\387a5092e0f0abffa959cf1ce6319463\\res\\drawable\\fui_ic_googleg_color_24dp.xml"
-    },
-    {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\1acdd91c57078b329574d5c7fabe4f86\\res\\drawable-xhdpi-v4\\common_google_signin_btn_icon_dark_normal_background.9.png"
+    },
+    {
+        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable_fui_ic_googleg_color_24dp.xml.flat",
+        "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.1.aar\\387a5092e0f0abffa959cf1ce6319463\\res\\drawable\\fui_ic_googleg_color_24dp.xml"
     },
     {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\layout_single_trip_card_layout.xml.flat",
@@ -200,12 +196,12 @@
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\drawable-ldrtl-xhdpi-v17\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
-        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_tooltip_exit.xml.flat",
-        "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\anim\\abc_tooltip_exit.xml"
-    },
-    {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_btn_radio_material.xml.flat",
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\drawable\\abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_tooltip_exit.xml.flat",
+        "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\anim\\abc_tooltip_exit.xml"
     },
     {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13_design_layout_snackbar.xml.flat",
@@ -220,12 +216,12 @@
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\111625796f0498bfedba5db94c64e713\\res\\drawable-mdpi-v4\\notify_panel_notification_icon_bg.png"
     },
     {
-        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_big_media.xml.flat",
-        "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.1.1.aar\\67d8e3e9a806dfd46e8686ffed6d9552\\res\\layout\\notification_template_big_media.xml"
-    },
-    {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_list_menu_item_checkbox.xml.flat",
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_big_media.xml.flat",
+        "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.1.1.aar\\67d8e3e9a806dfd46e8686ffed6d9552\\res\\layout\\notification_template_big_media.xml"
     },
     {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
@@ -316,12 +312,12 @@
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\drawable-hdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
-        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_navigation_item.xml.flat",
-        "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\fe86343237b50d5ab9dac27d6dee2fe1\\res\\layout\\design_navigation_item.xml"
-    },
-    {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_popup_menu_header_item_layout.xml.flat",
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\layout\\abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_navigation_item.xml.flat",
+        "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\fe86343237b50d5ab9dac27d6dee2fe1\\res\\layout\\design_navigation_item.xml"
     },
     {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_tint_default.xml.flat",
@@ -348,12 +344,12 @@
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\drawable\\abc_vector_test.xml"
     },
     {
-        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ic_arrow_drop_right_black_24dp.xml.flat",
-        "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
-    },
-    {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_star_half_black_48dp.png.flat",
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\drawable-xxxhdpi-v4\\abc_ic_star_half_black_48dp.png"
+    },
+    {
+        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ic_arrow_drop_right_black_24dp.xml.flat",
+        "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
     },
     {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_design_ic_visibility.png.flat",
@@ -364,12 +360,12 @@
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\drawable-mdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
-        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_list_focused_holo.9.png.flat",
-        "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\drawable-xhdpi-v4\\abc_list_focused_holo.9.png"
-    },
-    {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
+    },
+    {
+        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_list_focused_holo.9.png.flat",
+        "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\drawable-xhdpi-v4\\abc_list_focused_holo.9.png"
     },
     {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_media_custom.xml.flat",
@@ -392,12 +388,12 @@
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\fe86343237b50d5ab9dac27d6dee2fe1\\res\\layout\\design_layout_snackbar_include.xml"
     },
     {
-        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_media_cancel_action.xml.flat",
-        "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.1.1.aar\\67d8e3e9a806dfd46e8686ffed6d9552\\res\\layout\\notification_media_cancel_action.xml"
-    },
-    {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\layout_browser_actions_context_menu_page.xml.flat",
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\customtabs-27.1.1.aar\\3fffcbe6320834411d855a8f04fc4d0b\\res\\layout\\browser_actions_context_menu_page.xml"
+    },
+    {
+        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_media_cancel_action.xml.flat",
+        "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.1.1.aar\\67d8e3e9a806dfd46e8686ffed6d9552\\res\\layout\\notification_media_cancel_action.xml"
     },
     {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_upload_photo.xml.flat",
@@ -428,12 +424,12 @@
         "source": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\src\\main\\res\\drawable\\choose_image_icon.png"
     },
     {
-        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
-    },
-    {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v23_abc_control_background_material.xml.flat",
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\drawable-v23\\abc_control_background_material.xml"
+    },
+    {
+        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
     },
     {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
@@ -1198,6 +1194,10 @@
     {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_btn_check_to_on_mtrl_015.png.flat",
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\drawable-xxxhdpi-v4\\abc_btn_check_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_view_photos.xml.flat",
+        "source": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\src\\main\\res\\layout\\fragment_view_photos.xml"
     },
     {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",

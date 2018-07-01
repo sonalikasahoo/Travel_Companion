@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Jul 01 05:01:25 IST 2018
+#Sun Jul 01 06:36:14 IST 2018
 4.path=classes.dex
 8.set=NATIVE_RESOURCE
 6.path=lib/arm64-v8a/libclassifier_jni.so
