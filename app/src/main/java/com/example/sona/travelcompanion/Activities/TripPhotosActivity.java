@@ -49,7 +49,7 @@ public class TripPhotosActivity extends AppCompatActivity {
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference()
-                .child("users").child(firebaseUser.getUid()).child("photos").child(tripId);
+                .child("users").child(firebaseUser.getUid());
 
         final TripPhotosAdapter tripPhotosAdapter = new TripPhotosAdapter(allPhotos);
         rvTripPhotos.setAdapter(tripPhotosAdapter);
@@ -59,12 +59,19 @@ public class TripPhotosActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()) {
-                    //Log.d("pikachu", "onDataChange: yayeeee"+dataSnapshot1.getValue().toString());
-                    String photoUrl = dataSnapshot1.child("photoUrl").getValue().toString();
-                    String caption = dataSnapshot1.child("caption").getValue().toString();
-                    TripPhotosElements oneEle = new TripPhotosElements(photoUrl, caption);
-                    allPhotos.add(oneEle);
-                    tripPhotosAdapter.notifyDataSetChanged();
+                    if(!dataSnapshot1.getKey().equals("photos"))
+                        continue;
+                    for(DataSnapshot dataSnapshot2: dataSnapshot1.child(tripId).getChildren()) {
+                        String fileName = dataSnapshot2.getValue().toString();
+                        String photoUrl = dataSnapshot.child("photodetails").child(fileName)
+                                .child("photoUrl").getValue().toString();
+                        String caption = dataSnapshot.child("photodetails").child(fileName)
+                                .child("caption").getValue().toString();
+                        TripPhotosElements oneEle = new TripPhotosElements(photoUrl, caption);
+                        allPhotos.add(oneEle);
+                        tripPhotosAdapter.notifyDataSetChanged();
+                    }
+
                 }
             }
 

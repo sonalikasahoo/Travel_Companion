@@ -804,10 +804,6 @@
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\111625796f0498bfedba5db94c64e713\\res\\layout-v21\\notification_template_icon_group.xml"
     },
     {
-        "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_shared_plans.xml.flat",
-        "source": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\src\\main\\res\\layout\\fragment_shared_plans.xml"
-    },
-    {
         "merged": "E:\\AndroidStudioProjects\\TravelCompanion\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_cab_background_internal_bg.xml.flat",
         "source": "C:\\Users\\sona\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e9d145d6f3c8679e8b9e81ccabcd031a\\res\\drawable\\abc_cab_background_internal_bg.xml"
     },

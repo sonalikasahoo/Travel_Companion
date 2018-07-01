@@ -84,7 +84,7 @@ public class SingleTripActivity extends AppCompatActivity {
 
                 // add a list
                 String[] menu = {"Destination", "Flight", "Hotel", "Places To Visit",
-                        "Photos", "Shopping List", "Finance", "Note", "Checklist"};
+                        "Photos", "Finance", "Note"};
                 builder.setItems(menu, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

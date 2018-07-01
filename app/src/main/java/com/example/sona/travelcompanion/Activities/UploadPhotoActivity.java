@@ -196,8 +196,13 @@ public class UploadPhotoActivity extends AppCompatActivity {
                                         DatabaseReference databaseReference = FirebaseDatabase.getInstance()
                                                 .getReference();
                                         databaseReference.child("users").child(firebaseUser.getUid())
-                                                .child("photos").child(tripId).child(fileName)
-                                                .setValue(tripPhotosElements)
+                                                .child("photos").child(tripId).push().setValue(fileName);
+
+                                        databaseReference.child("users").child(firebaseUser.getUid())
+                                                .child("labels").child(caption).push().setValue(fileName);
+
+                                        databaseReference.child("users").child(firebaseUser.getUid())
+                                                .child("photodetails").child(fileName).setValue(tripPhotosElements)
                                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {
